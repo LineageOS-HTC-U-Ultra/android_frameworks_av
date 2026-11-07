@@ -1361,6 +1361,9 @@ status_t EffectModule::setVolume(uint32_t* left, uint32_t* right, bool controlle
     if (mStatus != NO_ERROR) {
         return mStatus;
     }
+    if (mEffectInterface == nullptr) {
+        return NO_INIT;
+    }
     status_t status = NO_ERROR;
     // Send volume indication if EFFECT_FLAG_VOLUME_IND is set and read back altered volume
     // if controller flag is set (Note that controller == TRUE => EFFECT_FLAG_VOLUME_CTRL set)
